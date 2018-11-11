@@ -49,7 +49,7 @@ public class CollectionTestSuite {
     @Test
     public void testShouldReturnFiveRecordList() {
         //Given
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
+
         //When
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
