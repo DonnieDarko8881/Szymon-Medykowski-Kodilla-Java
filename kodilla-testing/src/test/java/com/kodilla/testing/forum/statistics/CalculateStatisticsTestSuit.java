@@ -34,101 +34,102 @@ public class CalculateStatisticsTestSuit {
     }
 
     @Test
-    public void testCalculateAdvStatistics1000Users() {
+    public void return1000Users() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<>();
 
-        for (int i = 0; i <1000 ; i++) {
+        for (int i = 0; i < 1000; i++) {
             users.add("Adam");
         }
 
         when(statisticsMock.usersNames()).thenReturn(users);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberUsers = calculateStatistics.getNumberUsers();
+        int numberUsers = CalculateStatistics.getNumberUsers(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(1000, numberUsers);
     }
 
     @Test
-    public void testCalculateAdvStatistics0Users() {
+    public void return0Users() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         List<String> users = new ArrayList<>();
 
         when(statisticsMock.usersNames()).thenReturn(users);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberUsers = calculateStatistics.getNumberUsers();
+        int numberUsers = CalculateStatistics.getNumberUsers(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(0, numberUsers);
     }
 
+
     @Test
-    public void testCalculateAdvStatistics1000posts() {
+    public void return1000Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int posts = 1000;
 
         when(statisticsMock.postsCount()).thenReturn(posts);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberPosts = calculateStatistics.getNumberPosts();
+        int numberPosts = CalculateStatistics.getNumberPosts(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(1000, numberPosts);
     }
 
     @Test
-    public void testCalculateAdvStatistics0posts() {
+    public void return0Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int posts = 0;
 
         when(statisticsMock.postsCount()).thenReturn(posts);
-
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberPosts = calculateStatistics.getNumberPosts();
+        int numberPosts = CalculateStatistics.getNumberPosts(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(0, numberPosts);
     }
 
     @Test
-    public void testCalculateAdvStatistics0comments() {
+    public void return0Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int comments = 0;
 
         when(statisticsMock.commentsCount()).thenReturn(comments);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberComments = calculateStatistics.getNumberComments();
+        int numberComments = CalculateStatistics.getNumberComments(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(0, numberComments);
     }
 
     @Test
-    public void testCalculateAdvStatisticsPostsMoreThanComments() {
+    public void return200Posts100Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int posts = 200;
@@ -137,12 +138,12 @@ public class CalculateStatisticsTestSuit {
         when(statisticsMock.commentsCount()).thenReturn(comments);
         when(statisticsMock.postsCount()).thenReturn(posts);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberComments = calculateStatistics.getNumberComments();
-        int numberPosts = calculateStatistics.getNumberPosts();
+        int numberComments = CalculateStatistics.getNumberComments(statisticsMock);
+        int numberPosts = CalculateStatistics.getNumberPosts(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(100, numberComments);
@@ -150,7 +151,7 @@ public class CalculateStatisticsTestSuit {
     }
 
     @Test
-    public void testCalculateAdvStatisticsCommentsMoreThanPosts() {
+    public void return200Comments100Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
         int posts = 100;
@@ -159,12 +160,12 @@ public class CalculateStatisticsTestSuit {
         when(statisticsMock.commentsCount()).thenReturn(comments);
         when(statisticsMock.postsCount()).thenReturn(posts);
 
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        int numberComments = calculateStatistics.getNumberComments();
-        int numberPosts = calculateStatistics.getNumberPosts();
+        int numberComments = CalculateStatistics.getNumberComments(statisticsMock);
+        int numberPosts = CalculateStatistics.getNumberPosts(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(200, numberComments);
@@ -172,10 +173,9 @@ public class CalculateStatisticsTestSuit {
     }
 
     @Test
-    public void testAvrNumberPostsPerUserCount100Users33posts() {
+    public void returnAvrNumberPost33PerUser100() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        CalculateStatistics calculateStatistics = new CalculateStatistics(statisticsMock);
         int posts = 33;
 
         List<String> users = new ArrayList<>();
@@ -186,11 +186,11 @@ public class CalculateStatisticsTestSuit {
         when(statisticsMock.postsCount()).thenReturn(posts);
         when(statisticsMock.usersNames()).thenReturn(users);
 
-        calculateStatistics.calculateAdvStatistics(statisticsMock);
+        CalculateStatistics.calculateAdvStatistics(statisticsMock);
 
         //When
-        double avrNumberPostsPerUser = calculateStatistics.getAvrNumberPostsPerUser();
-
+        double avrNumberPostsPerUser = CalculateStatistics.getAvrNumberPostsPerUser(statisticsMock);
+        System.out.println(CalculateStatistics.showStatistics(statisticsMock));
 
         //Then
         Assert.assertEquals(0.33, avrNumberPostsPerUser,0.0);

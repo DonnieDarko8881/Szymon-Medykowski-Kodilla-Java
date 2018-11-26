@@ -1,91 +1,96 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.List;
+public final class CalculateStatistics {
 
-public class CalculateStatistics {
+    public CalculateStatistics(int numberPosts, int numberComments, int numberUsers) {
+        this.numberPosts = numberPosts;
+        this.numberComments = numberComments;
+        this.numberUsers = numberUsers;
 
-    Statistics statistics;
-    private int numberPosts;
-    private int numberComments;
-    private int numberUsers;
-    private double avrNumberPostsPerUser;
-    private double avrNumberCommentsPerUser;
-    private double avrNumberCommentsPerPost;
+    }
+
+    //final
+    final private int numberPosts;
+    final private int numberComments;
+    final private int numberUsers;
+
+    private static double avrNumberPostsPerUser;
+    private static double avrNumberCommentsPerUser;
+    private static double avrNumberCommentsPerPost;
 
 
-    public CalculateStatistics(Statistics statistics) {
+
+    /* public CalculateStatistics(Statistics statistics) {
         this.statistics = statistics;
+    }*/
+
+    private static int usersCount(Statistics statistics) {
+        return statistics.usersNames().size();
     }
 
-    public int usersCount() {
-        numberUsers = statistics.usersNames().size();
-        return numberUsers;
-    }
 
-
-    private double avrNumberPostsPerUserCount() {
-        avrNumberPostsPerUser = statistics.postsCount() / (double) usersCount();
+    private static double avrNumberPostsPerUserCount(Statistics statistics) {
+        avrNumberPostsPerUser = statistics.postsCount() / (double) usersCount(statistics);
         return avrNumberPostsPerUser;
     }
 
-    private double avrNumberCommentsPerUserCount() {
-        avrNumberCommentsPerUser = statistics.commentsCount() / (double) usersCount();
+    private static double avrNumberCommentsPerUserCount(Statistics statistics) {
+        avrNumberCommentsPerUser = statistics.commentsCount() / (double) usersCount(statistics);
 
         return avrNumberCommentsPerUser;
     }
 
-    private double avrNumberCommentsPerPostCount() {
+    private static double avrNumberCommentsPerPostCount(Statistics statistics) {
         avrNumberCommentsPerPost = statistics.commentsCount() / (double) statistics.postsCount();
         return avrNumberCommentsPerPost;
     }
 
-    public void calculateAdvStatistics(Statistics statistics) {
+    public static void calculateAdvStatistics(Statistics statistics) {
 
-        numberPosts = statistics.postsCount();
-        numberComments = statistics.commentsCount();
-        numberUsers = usersCount();
-        avrNumberPostsPerUser = avrNumberPostsPerUserCount();
-        avrNumberCommentsPerUser = avrNumberCommentsPerUserCount();
-        avrNumberCommentsPerPost = avrNumberCommentsPerPostCount();
+        CalculateStatistics result = new CalculateStatistics(statistics.postsCount(),statistics.commentsCount(),statistics.usersNames().size());
+        result.getNumberPosts(statistics);
+        result.getNumberComments(statistics);
+        result.getNumberUsers(statistics);
+        result.getAvrNumberPostsPerUser(statistics);
+        result.getAvrNumberCommentsPerPost(statistics);
+        result.getAvrNumberCommentsPerUser(statistics);
+
     }
 
-    public void showStatistics() {
-        toString();
-    }
-
-    @Override
-    public String toString() {
+    public static String showStatistics(Statistics statistics) {
         return "CalculateStatistics{" +
-                "numberPosts=" +  numberPosts +
-                ", numberComments=" + numberComments +
-                ", numberUsers=" + numberUsers+
-                ", avrNumberPostsPerUser=" + avrNumberPostsPerUser +
-                ", avrNumberCommentsPerUser=" + avrNumberCommentsPerUser +
-                ", avrNumberCommentsPerPost=" + avrNumberCommentsPerPost +
+                "numberPosts=" + getNumberPosts(statistics) +
+                ", numberComments=" + getNumberComments(statistics) +
+                ", numberUsers=" + getNumberUsers(statistics) +
+                ", avrNumberPostsPerUser=" + getAvrNumberPostsPerUser(statistics) +
+                ", avrNumberCommentsPerUser=" + getAvrNumberCommentsPerUser(statistics) +
+                ", avrNumberCommentsPerPost=" + getAvrNumberCommentsPerPost(statistics) +
                 '}';
     }
 
-    public int getNumberPosts() {
-        return numberPosts;
+
+
+    public static int getNumberPosts(Statistics statistics) {
+        return statistics.postsCount();
     }
 
-    public int getNumberComments() {
-        return numberComments;
+    public static int getNumberComments(Statistics statistics) {
+        return statistics.commentsCount();
     }
 
-    public int getNumberUsers() {
-        return numberUsers;
+    public static int getNumberUsers(Statistics statistics) {
+        return statistics.usersNames().size();
     }
 
-    public double getAvrNumberPostsPerUser() {
-        return avrNumberPostsPerUser;
+    public static double getAvrNumberPostsPerUser(Statistics statistics) {
+        return avrNumberPostsPerUserCount(statistics);
     }
 
-    public double getAvrNumberCommentsPerUser() {
-        return avrNumberCommentsPerUser;
+    public static double getAvrNumberCommentsPerUser(Statistics statistics) {
+        return avrNumberCommentsPerUserCount(statistics);
     }
 
-    public double getAvrNumberCommentsPerPost() {
-        return avrNumberCommentsPerPost;
+    public static double getAvrNumberCommentsPerPost(Statistics statistics) {
+        return avrNumberCommentsPerPostCount(statistics) ;
     }
 }
