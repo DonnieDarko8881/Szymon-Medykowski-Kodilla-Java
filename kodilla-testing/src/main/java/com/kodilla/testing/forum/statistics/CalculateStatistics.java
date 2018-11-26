@@ -2,27 +2,11 @@ package com.kodilla.testing.forum.statistics;
 
 public final class CalculateStatistics {
 
-    public CalculateStatistics(int numberPosts, int numberComments, int numberUsers) {
-        this.numberPosts = numberPosts;
-        this.numberComments = numberComments;
-        this.numberUsers = numberUsers;
+    final private Statistics statistics;
 
-    }
-
-    //final
-    final private int numberPosts;
-    final private int numberComments;
-    final private int numberUsers;
-
-    private static double avrNumberPostsPerUser;
-    private static double avrNumberCommentsPerUser;
-    private static double avrNumberCommentsPerPost;
-
-
-
-    /* public CalculateStatistics(Statistics statistics) {
+    public CalculateStatistics(Statistics statistics) {
         this.statistics = statistics;
-    }*/
+    }
 
     private static int usersCount(Statistics statistics) {
         return statistics.usersNames().size();
@@ -30,24 +14,21 @@ public final class CalculateStatistics {
 
 
     private static double avrNumberPostsPerUserCount(Statistics statistics) {
-        avrNumberPostsPerUser = statistics.postsCount() / (double) usersCount(statistics);
-        return avrNumberPostsPerUser;
+        return statistics.postsCount() / (double) usersCount(statistics);
     }
 
     private static double avrNumberCommentsPerUserCount(Statistics statistics) {
-        avrNumberCommentsPerUser = statistics.commentsCount() / (double) usersCount(statistics);
-
-        return avrNumberCommentsPerUser;
+        return statistics.commentsCount() / (double) usersCount(statistics);
     }
 
     private static double avrNumberCommentsPerPostCount(Statistics statistics) {
-        avrNumberCommentsPerPost = statistics.commentsCount() / (double) statistics.postsCount();
-        return avrNumberCommentsPerPost;
+
+        return statistics.commentsCount() / (double) statistics.postsCount();
     }
 
     public static void calculateAdvStatistics(Statistics statistics) {
 
-        CalculateStatistics result = new CalculateStatistics(statistics.postsCount(),statistics.commentsCount(),statistics.usersNames().size());
+        CalculateStatistics result = new CalculateStatistics(statistics);
         result.getNumberPosts(statistics);
         result.getNumberComments(statistics);
         result.getNumberUsers(statistics);
@@ -67,7 +48,6 @@ public final class CalculateStatistics {
                 ", avrNumberCommentsPerPost=" + getAvrNumberCommentsPerPost(statistics) +
                 '}';
     }
-
 
 
     public static int getNumberPosts(Statistics statistics) {
@@ -91,6 +71,6 @@ public final class CalculateStatistics {
     }
 
     public static double getAvrNumberCommentsPerPost(Statistics statistics) {
-        return avrNumberCommentsPerPostCount(statistics) ;
+        return avrNumberCommentsPerPostCount(statistics);
     }
 }
