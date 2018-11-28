@@ -21,20 +21,20 @@ public class FindFlight {
 
 
         if (ifCityArrivalISInMaP != true) {
-            throw new RouteNotFoundException("nie ma w mapie lotniska " + flight.getArrivalAirport() + " do przylotu");
+            throw new RouteNotFoundException(flight.getArrivalAirpo rt() + " is not found in the Map of the airport");
         } else {
             boolean possibilityOfLanding = airports.get(flight.getArrivalAirport()).booleanValue();
             if (possibilityOfLanding == false) {
-                throw new RouteNotFoundException("nie można wylądować na " + flight.getArrivalAirport() + ". Atak terorystyczny");
+                throw new RouteNotFoundException("it is not allowed to land in " + flight.getArrivalAirport() + ". Terrorist Attack!");
             }
         }
 
         if (ifCityDepartureIsInMaP != true) {
-            throw new RouteNotFoundException("Nie ma w mapie lotniska " + flight.getDepartureAirport() + " do odjazu ");
+            throw new RouteNotFoundException(flight.getDepartureAirport() + " is not found in the Map of the airport");
         } else {
             boolean possibilityOfTakesOff = airports.get(flight.getDepartureAirport()).booleanValue();
             if (possibilityOfTakesOff == false) {
-                throw new RouteNotFoundException("nie można wylecieć  z " + flight.getDepartureAirport() + ". Atak terorystyczny");
+                throw new RouteNotFoundException("it is not allowet to take off from " + flight.getDepartureAirport() + ". Terrosist Attack!");
             }
         }
 
