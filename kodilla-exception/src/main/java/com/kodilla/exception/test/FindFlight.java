@@ -21,7 +21,7 @@ public class FindFlight {
 
 
         if (ifCityArrivalISInMaP != true) {
-            throw new RouteNotFoundException(flight.getArrivalAirpo rt() + " is not found in the Map of the airport");
+            throw new RouteNotFoundException(flight.getArrivalAirport() + " is not found in the Map of the airport");
         } else {
             boolean possibilityOfLanding = airports.get(flight.getArrivalAirport()).booleanValue();
             if (possibilityOfLanding == false) {
