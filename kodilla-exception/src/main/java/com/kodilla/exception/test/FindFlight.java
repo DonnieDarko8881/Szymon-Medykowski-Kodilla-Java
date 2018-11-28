@@ -21,7 +21,7 @@ public class FindFlight {
 
 
         if (ifCityArrivalISInMaP != true) {
-            throw new RouteNotFoundException(flight.getArrivalAirport() + " is not found in the Map of the airport");
+            throw new RouteNotFoundException(flight.getArrivalAirport() + " is not found in the Map of the airport to arrival");
         } else {
             boolean possibilityOfLanding = airports.get(flight.getArrivalAirport()).booleanValue();
             if (possibilityOfLanding == false) {
@@ -30,7 +30,7 @@ public class FindFlight {
         }
 
         if (ifCityDepartureIsInMaP != true) {
-            throw new RouteNotFoundException(flight.getDepartureAirport() + " is not found in the Map of the airport");
+            throw new RouteNotFoundException(flight.getDepartureAirport() + " is not found in the Map of the airport to departure");
         } else {
             boolean possibilityOfTakesOff = airports.get(flight.getDepartureAirport()).booleanValue();
             if (possibilityOfTakesOff == false) {
