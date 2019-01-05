@@ -6,13 +6,13 @@ import java.util.Objects;
 
 final public class ForumUser {
     private final String username;
-    private final String fullName;
-    private final Date registrationDate;
+    private final String realName;
+    private final Date dateCreatedForumUser;
 
-    public ForumUser(String username, String realName, Date registrationDate) {
+    public ForumUser(String username, String realName, Date dateCreatedForumUser) {
         this.username = username;
-        this.fullName = fullName;
-        this.registrationDate = new Date(registrationDate.getTime());
+        this.realName = realName;
+        this.dateCreatedForumUser = new Date(dateCreatedForumUser.getTime());
 
     }
 
@@ -20,12 +20,12 @@ final public class ForumUser {
         return username;
     }
 
-    public String getfullName() {
-        return fullName;
+    public String getRealName() {
+        return realName;
     }
 
-    public Date getRegistrationDate() {
-        return new Date(registrationDate.getTime());
+    public Date getDateCreatedForumUser() {
+        return new Date(dateCreatedForumUser.getTime());
     }
 
     @Override
@@ -34,19 +34,19 @@ final public class ForumUser {
         if (o == null || getClass() != o.getClass()) return false;
         ForumUser forumUser = (ForumUser) o;
         return Objects.equals(username, forumUser.username) &&
-                Objects.equals(fullName, forumUser.fullName);
+                Objects.equals(realName, forumUser.realName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, fullName);
+        return Objects.hash(username, realName);
     }
 
     @Override
     public String toString() {
         return "ForumUser{" +
                 "username='" + username + '\'' +
-                ", realName='" + fullName + '\'' +
+                ", realName='" + realName + '\'' +
                 ", dateBirthDay=" + dateCreatedForumUser +
                 '}';
     }
