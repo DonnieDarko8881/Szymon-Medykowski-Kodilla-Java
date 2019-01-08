@@ -29,7 +29,7 @@ public class App {
         food2OrderProcessor1.process(orderRequest1);
         food2OrderProcessor1.informAboutRealization(orderRequest1);
 
-        
+
         OrderRequestRetrivier orderRequestRetrivier2 = new OrderRequestRetrivier();
         OrderRequest orderRequest2 = orderRequestRetrivier2.retrieve2();
 

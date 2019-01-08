@@ -10,14 +10,14 @@ public final class OrderRequest {
     private final User user;
     private final Deliver deliver;
     private final Food food;
-    private final int HowManyFood;
+    private final int howManyFood;
     private final LocalDateTime dateOfOrder;
 
     public OrderRequest(User user, Deliver deliver, Food food, int howManyFood, LocalDateTime dateOfOrder) {
         this.user = user;
         this.deliver = deliver;
         this.food = food;
-        HowManyFood = howManyFood;
+        this.howManyFood = howManyFood;
         this.dateOfOrder = dateOfOrder;
     }
 
@@ -34,7 +34,7 @@ public final class OrderRequest {
     }
 
     public int getHowManyFood() {
-        return HowManyFood;
+        return howManyFood;
     }
 
     public LocalDateTime getDateOfOrder() {
