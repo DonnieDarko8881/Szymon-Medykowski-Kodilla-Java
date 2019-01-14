@@ -7,7 +7,6 @@ public class Deliver {
 
     public Deliver(DeliverName deliverName, int telephoneNumber, String email) {
         this.deliverName = deliverName;
-
         this.telephoneNumber = telephoneNumber;
         this.email = email;
     }
