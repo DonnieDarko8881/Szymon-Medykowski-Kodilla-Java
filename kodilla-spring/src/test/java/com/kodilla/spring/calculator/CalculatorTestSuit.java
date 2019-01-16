@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CalculatorTestSuit {
 
     @Test
-    public void return5TestAdd() {
+    public void shouldReturn5FromAddition() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
@@ -26,7 +26,7 @@ public class CalculatorTestSuit {
     }
 
     @Test
-    public void return5TestSub() {
+    public void shouldReturn5FromSubstitution() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
@@ -39,7 +39,7 @@ public class CalculatorTestSuit {
     }
 
     @Test
-    public void return10TestMul() {
+    public void shouldReturn10FromMultiplication() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
@@ -52,7 +52,7 @@ public class CalculatorTestSuit {
     }
 
     @Test
-    public void return5TestDiv() {
+    public void shouldReturn5FromDividing() {
         //Given
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("com.kodilla.spring");
