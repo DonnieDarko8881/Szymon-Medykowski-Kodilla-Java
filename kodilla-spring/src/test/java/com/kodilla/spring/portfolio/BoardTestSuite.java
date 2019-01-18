@@ -16,7 +16,7 @@ import java.util.List;
 public class BoardTestSuite {
 
     @Test
-    public void ShouldReturn5OwnBeans() {
+    public void ShouldReturn4OwnBeans() {
         //Given
         ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
 
@@ -30,10 +30,10 @@ public class BoardTestSuite {
     @Test
     public void ShouldReturn1elementFromEachList() {
         //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         //When
         Board board = context.getBean(Board.class);
-        List<String> toDoList = board.getToDoList().getTasks();
+        List<String> toDoList =board.getToDoList().getTasks();
         List<String> inProgressList = board.getInProgressList().getTasks();
         List<String> doneList = board.getDoneList().getTasks();
 
@@ -50,7 +50,7 @@ public class BoardTestSuite {
     @Test
     public void ShouldShow1elementFromEachList() {
         //Given
-        ApplicationContext context = new AnnotationConfigApplicationContext(BoardConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
         //When
         Board board = context.getBean(Board.class);
         List<String> toDoList = board.getToDoList().getTasks();
