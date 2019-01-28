@@ -6,5 +6,5 @@ import com.kodilla.good.patterns.challanges.allegro.user.User;
 import java.time.LocalDateTime;
 
 public interface OrderService {
-     boolean order(final User user, final Subject subject, final LocalDateTime dateOfOrder);
+     boolean order(final OrderRequest orderRequest);
 }

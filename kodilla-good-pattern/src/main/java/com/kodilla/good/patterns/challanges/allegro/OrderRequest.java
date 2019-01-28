@@ -28,12 +28,4 @@ public class OrderRequest {
         return dateOfOrder;
     }
 
-    @Override
-    public String toString() {
-        return "OrderRequest{" +
-                "user=" + user +
-                ", subject=" + subject +
-                ", dateOfOrder=" + dateOfOrder +
-                '}';
-    }
 }

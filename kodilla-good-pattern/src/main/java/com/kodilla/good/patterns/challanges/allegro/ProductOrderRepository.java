@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public class ProductOrderRepository implements OrderRepository {
     @Override
-    public boolean createOrder(User user, Subject subject, LocalDateTime dateOfCreatingOrder) {
+    public boolean createOrder(OrderRequest orderRequest) {
         return true;
     }
 }
