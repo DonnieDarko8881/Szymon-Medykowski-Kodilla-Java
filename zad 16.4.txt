@@ -1,0 +1,24 @@
+1. Listê zadañ z tabeli ISSUESS z do³¹czonymi do nich nazwami list zadañ z tabeli ISSUESLISTS
+------------------------------------------------------------------------------------------
+select I.SUMMARY, I.DESCRIPTION_ as DESCRIPTION, IL.NAME as PROGRS_OF_TASK from ISSUES I 
+
+join ISSUESLISTS IL on IL.ID = I.ISSUESLIST_ID;
+
+2. Listê zadañ z tabeli ISSUESS z przypisanymi do nich u¿ytkownikami z tabeli USERS
+---------------------------------------------------------------------------------
+select I.SUMMARY, I.DESCRIPTION_ as DESCRIPTION, U.FIRSTNAME,
+U.LASTNAME from ISSUES I
+ 
+join USERS U on I.USER_ID_ASSIGNEDTO = U.ID;
+
+
+3. Imiona i nazwiska u¿ytkowników posiadaj¹cych zadania, wraz z informacj¹ o iloœci zadañ,
+ które s¹ do nich przypisane
+------------------------------------------------------------------------------------------
+SELECT U.LASTNAME, U.FIRSTNAME, COUNT(*) AS TASKS_NUMBER 
+FROM USERS U 
+JOIN ISSUES I ON U.ID = I.USER_ID_ASSIGNEDTO 
+
+group by U.LASTNAME, U.FIRSTNAME 
+
+HAVING COUNT(*)>1;
