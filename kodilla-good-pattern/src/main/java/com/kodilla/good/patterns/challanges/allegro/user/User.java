@@ -1,12 +1,10 @@
 package com.kodilla.good.patterns.challanges.allegro.user;
 
-import java.util.Objects;
-
 final public class User {
-    final private String name;
-    final private String surname;
-    final private int telephoneNumber;
-    final private String mail;
+    private final String name;
+    private final String surname;
+    private final int telephoneNumber;
+    private final String mail;
 
     public User(String name, String surname, int telephoneNumber, String mail) {
         this.name = name;
@@ -29,22 +27,6 @@ final public class User {
 
     public String getMail() {
         return mail;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return telephoneNumber == user.telephoneNumber &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(surname, user.surname) &&
-                Objects.equals(mail, user.mail);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, telephoneNumber, mail);
     }
 
     @Override

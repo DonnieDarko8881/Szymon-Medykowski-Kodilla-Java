@@ -29,11 +29,11 @@ public class Food2OrderProcessor {
         }
     }
 
-    public void informAboutRealization(final OrderRequest orderRequest) {
+    public String informAboutRealization(final OrderRequest orderRequest) {
         if (isRealized) {
-            informationService.informConfirmationOfRealisation(orderRequest.getUser());
+            return informationService.informConfirmationOfRealisation(orderRequest.getUser());
         } else {
-            informationService.informRejectionOfRealisation(orderRequest.getUser());
+            return informationService.informRejectionOfRealisation(orderRequest.getUser());
         }
     }
 

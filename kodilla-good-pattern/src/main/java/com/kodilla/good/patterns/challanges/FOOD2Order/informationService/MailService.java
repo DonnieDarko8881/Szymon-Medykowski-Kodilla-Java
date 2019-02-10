@@ -5,15 +5,13 @@ import com.kodilla.good.patterns.challanges.FOOD2Order.User.User;
 public class MailService implements InformationService {
 
     @Override
-    public void informConfirmationOfRealisation(User user) {
-        System.out.println("Dear " + user.getName() + " " + user.getSurname() + "!");
-        System.out.println("Your Order was realized");
+    public String informConfirmationOfRealisation(User user) {
+        return "Dear " + user.getName() + " " + user.getSurname() + "!\n" +"Your Order was realized";
     }
 
     @Override
-    public void informRejectionOfRealisation(User user) {
-        System.out.println("Dear " + user.getName() + " " + user.getSurname() + "!");
-        System.out.println("Your Order was rejected");
+    public String informRejectionOfRealisation(User user) {
+        return "Dear " + user.getName() + " " + user.getSurname() + "!\n"+ "Your Order was rejected";
     }
 
     @Override

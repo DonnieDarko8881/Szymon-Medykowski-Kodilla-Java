@@ -12,13 +12,12 @@ public class OrderProcessor {
     }
 
     public OrderDto process(final OrderRequest orderRequest) {
-        boolean isRented = orderService.order(orderRequest.getUser(), orderRequest.getSubject(),
-                orderRequest.getDateOfOrder());
+        boolean isOrdered = orderService.order(orderRequest);
 
-        if(isRented){
+        if (isOrdered) {
             informationService.informConfirmation(orderRequest.getUser());
-            orderRepository.createOrder(orderRequest.getUser(),orderRequest.getSubject(),orderRequest.getDateOfOrder());
-            return new OrderDto(orderRequest.getUser(),true);
+            orderRepository.createOrder(orderRequest);
+            return new OrderDto(orderRequest.getUser(), true);
         } else {
             informationService.informRejection(orderRequest.getUser());
             return new OrderDto(orderRequest.getUser(), false);
