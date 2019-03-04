@@ -29,13 +29,11 @@ public class LibraryTestSuite {
             cloneLibrary = library.shallowCopy();
             cloneLibrary.setName("Harry Potter in Ostrow WLKP");
         } catch (CloneNotSupportedException e) {
-            System.out.println(e);
+            e.getMessage();
         }
 
 
         //Then
-        System.out.println(library);
-        System.out.println(cloneLibrary);
         Assert.assertEquals(cloneLibrary.getBooks(), library.getBooks());
         Assert.assertEquals(3, cloneLibrary.getBooks().size());
     }
@@ -61,15 +59,13 @@ public class LibraryTestSuite {
             deepClonedLibrary = library.deepCopy();
             deepClonedLibrary.setName("Harry potter in Warsaw");
         } catch (CloneNotSupportedException e) {
-            System.out.println(e);
+            e.getMessage();
         }
 
         //When
         library.getBooks().remove(harry3);
 
         //Then
-        System.out.println(library);
-        System.out.println(deepClonedLibrary);
         Assert.assertEquals(2,library.getBooks().size());
         Assert.assertEquals(3, deepClonedLibrary.getBooks().size());
         Assert.assertNotEquals(deepClonedLibrary.getBooks(), library.getBooks());
