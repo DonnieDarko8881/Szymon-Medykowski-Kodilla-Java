@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NamedNativeQuery(
-        name= "Company.retrieveNameOfCompanyAfter3firstLetter",
+        name= "Company.retrieveCompanyBy3FirstLettersOfItsName",
         query = "SELECT * FROM COMPANIES"+
                 " WHERE LEFT(company_name,3)= :COMPANY_NAME",
         resultClass = Company.class
@@ -15,14 +15,14 @@ import java.util.List;
 @Table(name = "COMPANIES")
 public class Company {
     private int id;
-    private String company_name;
+    private String companyName;
     private List<Employee> employees  = new ArrayList<>();
 
     public Company() {
     }
 
     public Company(String name) {
-        this.company_name = name;
+        this.companyName = name;
     }
 
     @Id
@@ -36,7 +36,7 @@ public class Company {
     @NotNull
     @Column(name = "COMPANY_NAME")
     public String getName() {
-        return company_name;
+        return companyName;
     }
 
     @ManyToMany(cascade = CascadeType.ALL,mappedBy = "companies")
@@ -53,6 +53,6 @@ public class Company {
     }
 
     private void setName(String name) {
-        this.company_name = name;
+        this.companyName = name;
     }
 }
