@@ -46,13 +46,13 @@ public class QueryNamedTestSuit {
             employeeDao.delete(lindaKovalsky);
             employeeDao.delete(stephanieClarckson);
         } catch (Exception e) {
-            //nothing
+
         }
 
     }
 
     @Test
-    public void shouldReturn2companies_NameOfCompanyAfter3firstLetter() {
+    public void shouldReturn2companies_retrieveCompanyBy3FirstLettersOfItsName() {
         //Given
         Company softwareMachine = new Company("Software Machine");
         Company softSoup = new Company("Soft Soup");
@@ -68,7 +68,7 @@ public class QueryNamedTestSuit {
         companyDao.save(companies);
 
         //When
-        List<Company> findSoftwareMachine = companyDao.retrieveNameOfCompanyAfter3firstLetter("Sof");
+        List<Company> findSoftwareMachine = companyDao.retrieveCompanyBy3FirstLettersOfItsName("Sof");
 
         //then
         Assert.assertEquals(2,findSoftwareMachine.size());

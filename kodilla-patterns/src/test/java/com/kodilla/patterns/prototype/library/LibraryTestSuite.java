@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 
 public class LibraryTestSuite {
 
-    @Test
-    public void shouldReturn3booksInShallowCopyTest() {
+    @Test(expected = CloneNotSupportedException.class)
+    public void shouldReturn3booksInShallowCopyTest() throws CloneNotSupportedException {
         //Given
         Library library = new Library("Harry Potter");
         Book harry1 = new Book("Harry Potter and the Philosopher's Stone", "J.k Rowling ",
@@ -25,24 +25,19 @@ public class LibraryTestSuite {
 
         //when
         Library cloneLibrary = null;
-        try {
-            cloneLibrary = library.shallowCopy();
-            cloneLibrary.setName("Harry Potter in Ostrow WLKP");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+
+        cloneLibrary = library.shallowCopy();
+        cloneLibrary.setName("Harry Potter in Ostrow WLKP");
 
 
         //Then
-        System.out.println(library);
-        System.out.println(cloneLibrary);
         Assert.assertEquals(cloneLibrary.getBooks(), library.getBooks());
         Assert.assertEquals(3, cloneLibrary.getBooks().size());
     }
 
 
-    @Test
-    public void shouldReturn2booksInDeepCloneTest() {
+    @Test(expected = CloneNotSupportedException.class)
+    public void shouldReturn2booksInDeepCloneTest() throws CloneNotSupportedException {
         //Given
         Library library = new Library("Harry Potter");
         Book harry1 = new Book("Harry Potter and the Philosopher's Stone", "J.k Rowling ",
@@ -57,20 +52,16 @@ public class LibraryTestSuite {
         library.getBooks().add(harry3);
 
         Library deepClonedLibrary = null;
-        try {
-            deepClonedLibrary = library.deepCopy();
-            deepClonedLibrary.setName("Harry potter in Warsaw");
-        } catch (CloneNotSupportedException e) {
-            System.out.println(e);
-        }
+
+        deepClonedLibrary = library.deepCopy();
+        deepClonedLibrary.setName("Harry potter in Warsaw");
+
 
         //When
         library.getBooks().remove(harry3);
 
         //Then
-        System.out.println(library);
-        System.out.println(deepClonedLibrary);
-        Assert.assertEquals(2,library.getBooks().size());
+        Assert.assertEquals(2, library.getBooks().size());
         Assert.assertEquals(3, deepClonedLibrary.getBooks().size());
         Assert.assertNotEquals(deepClonedLibrary.getBooks(), library.getBooks());
     }
