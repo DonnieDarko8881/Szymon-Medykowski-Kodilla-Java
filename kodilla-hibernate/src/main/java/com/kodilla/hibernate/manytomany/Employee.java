@@ -1,17 +1,29 @@
 package com.kodilla.hibernate.manytomany;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@NamedQuery(
-        name = "Employee.retrieveGivenLastName",
-        query = "FROM Employee WHERE lastName =:LASTNAME"
-)
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrieveGivenLastName",
+                query = "FROM Employee WHERE lastName =:LASTNAME"
+        ),
+
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeByGivenPieceOfHisSurname",
+                query = "FROM Employee WHERE lastName LIKE :LASTNAME"
+
+        )
+
+})
 @Entity
 @Table(name = "EMPLOYEES")
+@Component
 public class Employee {
     private int id;
     private String firstName;

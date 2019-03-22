@@ -1,22 +1,33 @@
 package com.kodilla.hibernate.manytomany;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name= "Company.retrieveCompanyBy3FirstLettersOfItsName",
-        query = "SELECT * FROM COMPANIES"+
-                " WHERE LEFT(company_name,3)= :COMPANY_NAME",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyBy3FirstLettersOfItsName",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE LEFT(company_name,3)= :COMPANY_NAME",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyByPieceOfItsName",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE company_name LIKE :COMPANY_NAME",
+                resultClass = Company.class
+        )
+})
 @Entity
 @Table(name = "COMPANIES")
+@Component
 public class Company {
     private int id;
     private String companyName;
-    private List<Employee> employees  = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
@@ -39,7 +50,7 @@ public class Company {
         return companyName;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;
     }
