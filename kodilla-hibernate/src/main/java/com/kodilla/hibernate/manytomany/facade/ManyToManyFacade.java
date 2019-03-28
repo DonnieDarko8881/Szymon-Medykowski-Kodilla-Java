@@ -11,12 +11,14 @@ import java.util.List;
 
 @Service
 public class ManyToManyFacade {
+    private CompanyDao companyDao;
+    private EmployeeDao employeeDao;
 
     @Autowired
-    CompanyDao companyDao;
-
-    @Autowired
-    EmployeeDao employeeDao;
+    public ManyToManyFacade(CompanyDao companyDao, EmployeeDao employeeDao) {
+        this.companyDao = companyDao;
+        this.employeeDao = employeeDao;
+    }
 
     public List<Company> retrieveCompanyByPieceOfItsName(String pieceOfNameOfCompany){
         return companyDao.retrieveCompanyByPieceOfItsName("%"+pieceOfNameOfCompany+"%");

@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.manytomany;
 
 import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
         @NamedNativeQuery(
                 name = "Company.retrieveCompanyBy3FirstLettersOfItsName",
                 query = "SELECT * FROM COMPANIES" +
-                        " WHERE LEFT(company_name,3)= :COMPANY_NAME",
+                        " WHERE LEFT(company_name,3)= LEFT(:COMPANY_NAME,3)",
                 resultClass = Company.class
         ),
         @NamedNativeQuery(
@@ -28,6 +27,7 @@ public class Company {
     private int id;
     private String companyName;
     private List<Employee> employees = new ArrayList<>();
+
 
     public Company() {
     }
