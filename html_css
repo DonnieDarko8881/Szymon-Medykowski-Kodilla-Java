@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <h1>Kodilla Course</h1>
+    <p>Something new!</p>
+  </body>
+</html>
+
+
+
+CSS
+_________________________________________________
+
+body {
+    background-color: green;
+}
+
+h1 {
+	text-align: center;
+	color: red;
+	font-size: 100px;
+}
+
+p {
+  font-size: 40px;
+  color: blue;
+}
+
+
+
